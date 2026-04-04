@@ -1,85 +1,583 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lowara Safaris</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lowara Safaris | Wild Journeys. Real Tanzania.</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #1b130f 0%, #2a1b14 35%, #3a261b 70%, #221712 100%);
+      color: #f6efe8;
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(27, 19, 15, 0.94);
+      border-bottom: 1px solid rgba(232, 166, 84, 0.18);
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #7a4a20, #c87528, #2f7c62);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 900;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .brand-text h1 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: -0.03em;
+      color: #fff4e7;
+    }
+    .brand-text p {
+      margin: 3px 0 0;
+      color: #d8b792;
+      font-size: 14px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      color: #f2dfcd;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .nav-links a:hover { color: #f2b165; }
+    .hero {
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(20,13,10,0.9) 0%, rgba(29,19,14,0.82) 42%, rgba(52,33,19,0.56) 100%),
+        url('https://commons.wikimedia.org/wiki/Special:FilePath/Serengeti-Landscape-2012.JPG') center/cover no-repeat;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 28px;
+      align-items: center;
+      padding: 70px 0;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(196, 125, 49, 0.14);
+      border: 1px solid rgba(232, 166, 84, 0.26);
+      color: #f2c995;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+    .hero h2 {
+      margin: 18px 0 0;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      color: white;
+      max-width: 760px;
+    }
+    .hero p.lead {
+      margin: 22px 0 0;
+      max-width: 760px;
+      color: #eee1d4;
+      font-size: 19px;
+    }
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+    .btn-primary {
+      background: #238b61;
+      color: white;
+    }
+    .btn-primary:hover { background: #1f7754; }
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: #fff0dd;
+      border: 1px solid rgba(232,166,84,0.22);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+    .hero-side {
+      display: grid;
+      gap: 16px;
+    }
+    .hero-card {
+      background: rgba(29, 19, 14, 0.82);
+      border: 1px solid rgba(232,166,84,0.14);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.20);
+    }
+    .hero-card h3 {
+      margin: 0 0 10px;
+      color: #ffd8a7;
+      font-size: 18px;
+    }
+    .hero-card p, .hero-card li {
+      color: #ead9ca;
+      font-size: 15px;
+    }
+    section {
+      padding: 82px 0;
+    }
+    .section-title {
+      color: #f0be82;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 0 0 10px;
+    }
+    .section-heading {
+      margin: 0;
+      color: #fff1e2;
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.14;
+    }
+    .section-text {
+      color: #e7d8c9;
+      font-size: 18px;
+      margin-top: 16px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+    }
+    .panel {
+      background: rgba(31, 21, 16, 0.84);
+      border: 1px solid rgba(232,166,84,0.12);
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.18);
+    }
+    .strength-list, .service-list, .why-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .strength-item, .service-item, .why-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 16px;
+      color: #f1e6db;
+    }
+    .package-stack {
+      display: grid;
+      gap: 28px;
+      margin-top: 32px;
+    }
+    .package {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 0;
+      background: rgba(31,21,16,0.88);
+      border: 1px solid rgba(232,166,84,0.14);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.18);
+    }
+    .package:nth-child(even) {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+    .package img {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      object-fit: cover;
+    }
+    .package-content {
+      padding: 32px;
+    }
+    .package-content h3 {
+      margin: 14px 0 10px;
+      color: #fff0de;
+      font-size: 30px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(196,125,49,0.14);
+      color: #f3cb9d;
+      font-size: 12px;
+      font-weight: bold;
+      margin: 0 8px 8px 0;
+    }
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .highlight {
+      background: rgba(255,255,255,0.04);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #eddccb;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(31,21,16,0.8);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+    .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 18px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.85));
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 0;
+      overflow: hidden;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(32,21,16,0.95), rgba(76,45,24,0.95));
+      border: 1px solid rgba(232,166,84,0.14);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+    }
+    .contact-left, .contact-right {
+      padding: 36px;
+    }
+    .contact-right {
+      background: rgba(0,0,0,0.10);
+      border-left: 1px solid rgba(255,255,255,0.06);
+    }
+    .contact-box {
+      background: rgba(255,255,255,0.05);
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+    .floating {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1200;
+      background: #238b61;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: bold;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.28);
+    }
+    footer {
+      text-align: center;
+      padding: 28px 16px 38px;
+      color: #cdb7a1;
+      border-top: 1px solid rgba(232,166,84,0.10);
+      font-size: 14px;
+    }
+    @media (max-width: 980px) {
+      .hero-grid, .grid-2, .contact-grid, .package, .package:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav { flex-direction: column; align-items: flex-start; }
+      .nav-links { justify-content: flex-start; }
+    }
+    @media (max-width: 700px) {
+      .gallery-grid, .highlights { grid-template-columns: 1fr; }
+      .nav-links { gap: 14px; }
+      .brand-text h1 { font-size: 22px; }
+      .hero p.lead, .section-text { font-size: 16px; }
+      .package-content h3 { font-size: 24px; }
+      .panel, .package-content, .contact-left, .contact-right { padding: 24px; }
+    }
+  </style>
 </head>
-<body style="margin:0;font-family:Arial;background:#1a120d;color:white;">
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">L</div>
+        <div class="brand-text">
+          <h1>Lowara Safaris</h1>
+          <p>Wild Journeys. Real Tanzania.</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#why-us">Why Choose Us</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- HEADER -->
-  <div style="padding:20px;background:#1a120d;border-bottom:1px solid #333;">
-    <h1>Lowara Safaris</h1>
-    <p>Wild Journeys. Real Tanzania.</p>
-  </div>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Tanzania safaris, beach escapes, mountain experiences, and custom travel planning</div>
+        <h2>Discover Tanzania with a tourism company that feels more personal, more detailed, and more memorable.</h2>
+        <p class="lead">Lowara Safaris is built for travelers who want more than a basic booking. We design journeys across Serengeti, Ngorongoro, Tarangire, Lake Manyara, Kilimanjaro, Zanzibar, and Tanzania’s cultural destinations with attention to comfort, communication, local knowledge, and unforgettable experiences.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href="https://wa.me/255762067794?text=Hello%20Lowara%20Safaris%2C%20I%20want%20to%20plan%20a%20trip." target="_blank">Chat on WhatsApp</a>
+          <a class="btn btn-secondary" href="#packages">Explore Packages</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="hero-card">
+          <h3>What makes Lowara Safaris different</h3>
+          <p>We focus on tailor-made itineraries, warm guest care, smooth planning, fast WhatsApp communication, and travel experiences that feel rich, organized, and authentic from start to finish.</p>
+        </div>
+        <div class="hero-card">
+          <h3>Perfect for</h3>
+          <ul>
+            <li>Couples and honeymooners</li>
+            <li>Families and private groups</li>
+            <li>Solo travelers and photographers</li>
+            <li>Guests combining safari and Zanzibar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- HERO -->
-  <div style="padding:60px;background:url('https://commons.wikimedia.org/wiki/Special:FilePath/Serengeti-Landscape-2012.JPG') center/cover;">
-    <h2>Explore Tanzania Like Never Before</h2>
-    <p>Luxury safaris, cultural experiences, and beach escapes designed for unforgettable memories.</p>
-    <a href="https://wa.me/255762067794" style="display:inline-block;margin-top:20px;padding:15px 25px;background:green;color:white;text-decoration:none;border-radius:10px;">Chat on WhatsApp</a>
-  </div>
+  <section id="about">
+    <div class="container grid-2">
+      <div class="panel">
+        <p class="section-title">About Lowara Safaris</p>
+        <h2 class="section-heading">A stronger Tanzania travel brand with deeper explanation, better structure, and more convincing presentation.</h2>
+        <p class="section-text">Lowara Safaris is a Tanzania-based tourism company offering tailor-made travel experiences for guests who want quality planning, reliable service, and a journey that feels thoughtfully designed. We specialize in wildlife safaris, Zanzibar beach holidays, Kilimanjaro extensions, cultural tours, family travel, romantic escapes, and custom itineraries across Tanzania.</p>
+        <p class="section-text">Our mission is not simply to move guests from one place to another. We aim to create journeys that feel smooth, inspiring, and personal. From the first message to the last day of travel, we focus on clear communication, trusted local coordination, comfortable transport, and memorable route design so every traveler feels confident and cared for.</p>
+      </div>
+      <div class="panel">
+        <p class="section-title">Our Strength</p>
+        <div class="strength-list">
+          <div class="strength-item">Tailor-made itineraries designed around the traveler, not copied from a generic template.</div>
+          <div class="strength-item">Fast WhatsApp support that makes planning simple and direct.</div>
+          <div class="strength-item">Flexibility for budget, mid-range, premium, private, romantic, and family travel styles.</div>
+          <div class="strength-item">Strong local knowledge of destinations, routes, experiences, and guest expectations in Tanzania.</div>
+          <div class="strength-item">A warm, professional approach that helps the brand feel trustworthy and memorable.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- ABOUT -->
-  <div style="padding:40px;">
-    <h2>About Lowara Safaris</h2>
-    <p>Lowara Safaris is a Tanzania-based tourism company offering personalized travel experiences across the country. We specialize in creating tailor-made safari adventures, beach holidays in Zanzibar, Kilimanjaro trips, and cultural tours that reflect the real beauty of Tanzania.</p>
-    <p>Our goal is to provide smooth, safe, and memorable journeys for couples, families, groups, and solo travelers.</p>
-  </div>
+  <section id="services">
+    <div class="container">
+      <p class="section-title">Services</p>
+      <h2 class="section-heading">Full tourism support across Tanzania</h2>
+      <p class="section-text">Lowara Safaris is not just a safari listing page. We present ourselves as a complete tourism company able to support guests across many travel needs, with planning that feels organized and professional.</p>
+      <div class="service-list">
+        <div class="service-item"><strong>Wildlife Safaris:</strong> Carefully planned journeys to Serengeti, Ngorongoro, Tarangire, Lake Manyara, Arusha National Park, and other wildlife destinations for travelers who want classic Tanzania safari experiences.</div>
+        <div class="service-item"><strong>Zanzibar Beach Holidays:</strong> Beach escapes designed for relaxation, romance, family leisure, and post-safari extensions with island stays, coastal experiences, and smooth transfers.</div>
+        <div class="service-item"><strong>Kilimanjaro and Highland Trips:</strong> Scenic mountain views, day excursions, hiking add-ons, coffee tours, and northern Tanzania highland experiences for travelers seeking more than wildlife alone.</div>
+        <div class="service-item"><strong>Airport Pickup and Transfers:</strong> Travel coordination from arrival to departure, including transport support, lodge transfer assistance, and organized movement between destinations.</div>
+        <div class="service-item"><strong>Private, Group, Family, and Honeymoon Travel:</strong> Flexible travel styles that allow Lowara Safaris to serve different guest needs with care and confidence.</div>
+        <div class="service-item"><strong>Custom Travel Design:</strong> Personalized itineraries shaped around dates, pace, destinations, comfort level, and special interests such as photography, romance, or cultural discovery.</div>
+      </div>
+    </div>
+  </section>
 
-  <!-- SERVICES -->
-  <div style="padding:40px;background:#2a1a12;">
-    <h2>Our Services</h2>
-    <ul>
-      <li>Wildlife Safaris (Serengeti, Ngorongoro, Tarangire)</li>
-      <li>Zanzibar Beach Holidays</li>
-      <li>Kilimanjaro and Mountain Trips</li>
-      <li>Airport Transfers and Transport</li>
-      <li>Custom Travel Packages</li>
-      <li>Group, Family and Honeymoon Trips</li>
-    </ul>
-  </div>
+  <section id="packages">
+    <div class="container">
+      <p class="section-title">Packages</p>
+      <h2 class="section-heading">Detailed signature experiences</h2>
+      <p class="section-text">These sample packages are written in a more convincing way so visitors immediately understand the value, atmosphere, and flexibility of your company.</p>
 
-  <!-- PACKAGES -->
-  <div style="padding:40px;">
-    <h2>Popular Packages</h2>
-    <h3>5 Days Serengeti Safari</h3>
-    <p>Experience the Big Five with game drives across Serengeti and Ngorongoro.</p>
+      <div class="package-stack">
+        <div class="package">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Serengeti%20National%20Park%2015%20-%20landscape.jpg" alt="Serengeti safari" />
+          <div class="package-content">
+            <span class="badge">5 Days / 4 Nights</span>
+            <span class="badge">Northern Circuit</span>
+            <h3>Serengeti and Ngorongoro Signature Safari</h3>
+            <p>This package is ideal for travelers who want a classic Tanzania wildlife journey with rich scenery, unforgettable game drives, and a balanced route across some of the country’s most iconic safari destinations. It is designed for guests who want comfort, excellent wildlife viewing, and the feeling of a professionally coordinated adventure.</p>
+            <div class="highlights">
+              <div class="highlight">Big Five safari potential</div>
+              <div class="highlight">Private 4x4 safari planning</div>
+              <div class="highlight">Scenic crater and plains experience</div>
+              <div class="highlight">Suitable for couples, families, and private groups</div>
+            </div>
+          </div>
+        </div>
 
-    <h3>Zanzibar Beach Escape</h3>
-    <p>Relax on white sand beaches with crystal clear waters and sunset dhow trips.</p>
+        <div class="package">
+          <div class="package-content">
+            <span class="badge">3 to 7 Days</span>
+            <span class="badge">Beach Extension</span>
+            <h3>Zanzibar Ocean and Relaxation Escape</h3>
+            <p>Perfect for travelers who want white-sand beaches, Indian Ocean beauty, rest after safari, and a more romantic or peaceful atmosphere. This experience gives your company a softer luxury side and shows that Lowara Safaris can offer more than wildlife alone.</p>
+            <div class="highlights">
+              <div class="highlight">Ideal after safari</div>
+              <div class="highlight">Great for couples and honeymooners</div>
+              <div class="highlight">Beach, culture, and island feeling</div>
+              <div class="highlight">Flexible stay length and comfort options</div>
+            </div>
+          </div>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nungwi-Beach-Zanzibar.jpg" alt="Zanzibar beach" />
+        </div>
 
-    <h3>Kilimanjaro Experience</h3>
-    <p>Explore the beauty of Africa’s highest mountain with guided tours and scenic views.</p>
-  </div>
+        <div class="package">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mount%20Kilimanjaro.jpg" alt="Mount Kilimanjaro" />
+          <div class="package-content">
+            <span class="badge">1 to 5 Days</span>
+            <span class="badge">Mountain & Culture</span>
+            <h3>Kilimanjaro Views, Waterfalls, and Highland Discovery</h3>
+            <p>This package works well for travelers who want landscapes, local experiences, coffee culture, light adventure, and beautiful northern Tanzania scenery without committing to a full mountain climb. It helps present your company as versatile and creative in the experiences it offers.</p>
+            <div class="highlights">
+              <div class="highlight">Excellent safari add-on</div>
+              <div class="highlight">Great for scenic photography</div>
+              <div class="highlight">Local village and coffee experiences</div>
+              <div class="highlight">Relaxed adventure style</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- GALLERY -->
-  <div style="padding:40px;background:#2a1a12;">
-    <h2>Gallery</h2>
-    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lion%20Serengeti.JPG" style="width:100%;max-width:300px;margin:10px;">
-    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mount%20Kilimanjaro.jpg" style="width:100%;max-width:300px;margin:10px;">
-    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Beach%20at%20Zanzibar.jpg" style="width:100%;max-width:300px;margin:10px;">
-  </div>
+  <section id="gallery">
+    <div class="container">
+      <p class="section-title">Gallery</p>
+      <h2 class="section-heading">Serengeti, Kilimanjaro, Zanzibar, and the wildlife that makes Tanzania unforgettable</h2>
+      <p class="section-text">A stronger gallery helps the website feel more trustworthy and emotional. It gives visitors immediate visual proof of the kind of experiences they can expect through Lowara Safaris.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lion%20Serengeti.JPG" alt="Lion Serengeti" />
+          <div class="gallery-caption">Serengeti Lions</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Masai%20Giraffe%20against%20Mount%20Kilimanjaro.jpg" alt="Giraffe and Kilimanjaro" />
+          <div class="gallery-caption">Giraffes and Kilimanjaro</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Beach%20at%20Zanzibar.jpg" alt="Zanzibar beach" />
+          <div class="gallery-caption">Zanzibar Beach</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/African%20Bush%20Elephant.jpg" alt="Elephant Tanzania" />
+          <div class="gallery-caption">Tanzania Elephants</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mount%20Kilimanjaro.jpg" alt="Mount Kilimanjaro" />
+          <div class="gallery-caption">Mount Kilimanjaro</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Serengeti-Landscape-2012.JPG" alt="Serengeti landscape" />
+          <div class="gallery-caption">Serengeti Landscape</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- WHY CHOOSE US -->
-  <div style="padding:40px;">
-    <h2>Why Choose Us</h2>
-    <ul>
-      <li>Experienced local guides</li>
-      <li>Flexible and customized itineraries</li>
-      <li>Affordable and premium options</li>
-      <li>Fast WhatsApp communication</li>
-      <li>Reliable and professional service</li>
-    </ul>
-  </div>
+  <section id="why-us">
+    <div class="container grid-2">
+      <div class="panel">
+        <p class="section-title">Why Choose Us</p>
+        <h2 class="section-heading">Why travelers should feel confident choosing Lowara Safaris</h2>
+        <p class="section-text">A convincing tourism website needs more than beautiful colors and a few pictures. It must explain clearly why the company deserves trust. This section helps you sound more serious, more capable, and more established.</p>
+      </div>
+      <div class="panel">
+        <div class="why-list">
+          <div class="why-item">We create travel experiences that feel personalized instead of generic.</div>
+          <div class="why-item">We combine wildlife, beach, mountain, and cultural travel under one brand.</div>
+          <div class="why-item">We communicate quickly through WhatsApp, which fits how many guests prefer to plan.</div>
+          <div class="why-item">We present Tanzania not only as a destination, but as an experience with atmosphere, story, and care.</div>
+          <div class="why-item">We are building a brand image that feels premium, warm, and memorable.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- CONTACT -->
-  <div style="padding:40px;background:#2a1a12;">
-    <h2>Contact Us</h2>
-    <p>Phone / WhatsApp: +255 762 067 794</p>
-    <p>Email: stiollasagday06@gmail.com</p>
-    <a href="https://wa.me/255762067794" style="display:inline-block;margin-top:15px;padding:12px 20px;background:green;color:white;text-decoration:none;border-radius:8px;">Message Us</a>
-  </div>
+  <section id="contact">
+    <div class="container contact-grid">
+      <div class="contact-left">
+        <p class="section-title">Contact Us</p>
+        <h2 class="section-heading">Start planning your Tanzania journey with Lowara Safaris</h2>
+        <p class="section-text">Tell us your travel dates, group size, dream destinations, and preferred travel style. Whether you want a wildlife safari, a beach extension, a honeymoon itinerary, family travel, or a custom Tanzania adventure, Lowara Safaris is ready to help you design a journey that feels clear, smooth, and exciting from the first conversation.</p>
+        <div class="contact-box"><strong>Phone / WhatsApp:</strong> +255 762 067 794</div>
+        <div class="contact-box"><strong>Current Email:</strong> stiollasagday06@gmail.com</div>
+        <div class="contact-box"><strong>Recommended Business Email:</strong> info@lowarasafaris.com</div>
+      </div>
+      <div class="contact-right">
+        <p class="section-title">Quick Action</p>
+        <h2 class="section-heading" style="font-size: 34px;">The fastest way to reach us is WhatsApp</h2>
+        <p class="section-text" style="font-size:16px;">This call-to-action is important because it matches how many tourism clients prefer to ask questions, compare itineraries, and begin planning. It makes the website feel more active and easier to trust.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href="https://wa.me/255762067794?text=Hello%20Lowara%20Safaris%2C%20I%20would%20like%20to%20book%20a%20trip." target="_blank">Open WhatsApp Chat</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <a class="floating" href="https://wa.me/255762067794?text=Hello%20Lowara%20Safaris%2C%20I%20would%20like%20to%20book%20a%20trip." target="_blank">💬 WhatsApp</a>
+
+  <footer>
+    © 2026 Lowara Safaris. All rights reserved.
+  </footer>
 </body>
 </html>
+
