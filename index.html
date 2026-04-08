@@ -86,18 +86,20 @@
     .brand { display: flex; align-items: center; gap: 14px; }
     .logo {
       position: relative;
-      width: 62px;
-      height: 62px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #7b4b20, #c97a2a, #2f7c62);
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      background: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-weight: 900;
-      font-size: 28px;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .logo::after {
       content: "";
@@ -141,7 +143,7 @@
         linear-gradient(90deg, rgba(16,11,9,0.92) 0%, rgba(28,18,13,0.82) 42%, rgba(59,35,18,0.46) 100%),
         radial-gradient(circle at top right, rgba(232,166,84,0.18), transparent 28%),
         radial-gradient(circle at bottom left, rgba(35,139,97,0.16), transparent 32%),
-        url('https://commons.wikimedia.org/wiki/Special:FilePath/Serengeti-Landscape-2012.JPG') center/cover no-repeat;
+        url('leopard-hero.jpg') center/cover no-repeat;
     }
     .hero-grid {
       display: grid;
@@ -548,6 +550,51 @@
       fill: white;
     }
 
+    .luxury-strip {
+      padding: 26px 28px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(232,166,84,0.16), rgba(35,139,97,0.14));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: center;
+      margin-top: 34px;
+    }
+    .luxury-strip h3 {
+      margin: 0;
+      color: #fff2e3;
+      font-size: 28px;
+      line-height: 1.18;
+    }
+    .luxury-strip p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .faq-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+    }
+    .faq-item h3 {
+      margin: 0 0 8px;
+      color: #fff1df;
+      font-size: 21px;
+    }
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
     .floating {
       position: fixed;
       right: 18px;
@@ -585,6 +632,14 @@
       .gallery-grid,
       .reviews-grid,
       .partners-grid,
+      .stats-grid,
+      .luxury-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .service-grid-premium,
+      .gallery-grid,
+      .reviews-grid,
+      .partners-grid,
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -599,6 +654,15 @@
       .package-content p { font-size: 16px; }
       .hero h1 { font-size: 42px; }
       .section-heading { font-size: 30px; }
+      .service-grid-premium,
+      .gallery-grid,
+      .reviews-grid,
+      .partners-grid,
+      .stats-grid,
+      .highlights,
+      .luxury-strip {
+        grid-template-columns: 1fr;
+      }
       .service-grid-premium,
       .gallery-grid,
       .reviews-grid,
@@ -621,7 +685,7 @@
   <header class="topbar">
     <div class="container nav">
       <div class="brand">
-        <div class="logo">L</div>
+        <div class="logo"><img src="logo.jpg" alt="Lowara Safaris Logo" /></div>
         <div class="brand-text">
           <div style="font-size:28px;font-weight:800;line-height:1;letter-spacing:-0.04em;color:#fff4e8;">Lowara Safaris</div>
           <p>Wild Journeys. Real Tanzania.</p>
@@ -752,7 +816,7 @@
 
       <div class="package-stack">
         <div class="package">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Serengeti%20National%20Park%2015%20-%20landscape.jpg" alt="Serengeti National Park Tanzania safari landscape" />
+          <img src="safari-road.jpg" alt="Tanzania safari road through savannah" />
           <div class="package-content">
             <span class="badge">5 Days / 4 Nights</span>
             <span class="badge">Northern Circuit Safari</span>
@@ -780,11 +844,11 @@
               <div class="highlight">Flexible stay length and comfort options</div>
             </div>
           </div>
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nungwi-Beach-Zanzibar.jpg" alt="Zanzibar beach Tanzania holiday" />
+          <img src="zanzibar-beach-1.jpg" alt="Zanzibar beach Tanzania" />
         </div>
 
         <div class="package">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mount%20Kilimanjaro.jpg" alt="Mount Kilimanjaro Tanzania tour" />
+          <img src="lion-ngoro.jpg" alt="Lion in Ngorongoro Tanzania" />
           <div class="package-content">
             <span class="badge">1 to 5 Days</span>
             <span class="badge">Kilimanjaro &amp; Highlands</span>
@@ -802,18 +866,35 @@
     </div>
   </section>
 
+  <section>
+    <div class="container">
+      <div class="luxury-strip">
+        <div>
+          <h3>Private Tanzania journeys with fast planning, flexible routes, and warm local guidance.</h3>
+          <p>From first inquiry to final transfer, Lowara Safaris focuses on clear communication, honest support, and experiences that feel smooth, personal, and memorable.</p>
+        </div>
+        <div class="button-row" style="justify-content:flex-end; margin-top:0;">
+          <a class="btn btn-primary" href="https://wa.me/255762067794?text=Hello%20Lowara%20Safaris%2C%20I%20want%20a%20custom%20Tanzania%20itinerary." target="_blank" rel="noreferrer">
+            <svg class="icon-wa" viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.21c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.33-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.47.07-.71.33-.24.27-.91.89-.91 2.16 0 1.27.93 2.5 1.06 2.67.13.18 1.83 2.79 4.44 3.91.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.07 1.58-.64 1.8-1.26.22-.62.22-1.15.16-1.26-.07-.11-.24-.18-.51-.31zM16.27 4.36c-6.35 0-11.5 5.15-11.5 11.5 0 2.03.53 4.01 1.54 5.76L4.7 27.64l6.17-1.58a11.45 11.45 0 0 0 5.4 1.38h.01c6.35 0 11.5-5.15 11.5-11.5 0-3.08-1.2-5.98-3.38-8.15a11.42 11.42 0 0 0-8.13-3.43zm0 21.14h-.01a9.54 9.54 0 0 1-4.87-1.34l-.35-.21-3.66.94.98-3.57-.23-.37a9.58 9.58 0 0 1-1.47-5.08c0-5.29 4.31-9.6 9.61-9.6 2.56 0 4.96.99 6.77 2.8a9.52 9.52 0 0 1 2.81 6.8c0 5.29-4.31 9.6-9.58 9.6z"/></svg>
+            Plan My Trip
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="gallery">
     <div class="container">
       <p class="section-title">Gallery</p>
-      <h2 class="section-heading">Serengeti, Kilimanjaro, Zanzibar, and the wildlife that makes Tanzania unforgettable</h2>
-      <p class="section-text">From wildlife encounters on the plains to mountain views and Indian Ocean beaches, these scenes reflect the beauty, diversity, and atmosphere that make Tanzania such a remarkable destination.</p>
+      <h2 class="section-heading">Real moments from Tanzania</h2>
+      <p class="section-text">Authentic experiences from Zanzibar beaches, safari adventures, and wildlife encounters across Tanzania.</p>
       <div class="gallery-grid">
-        <div class="gallery-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lion%20Serengeti.JPG" alt="Lion in Serengeti National Park Tanzania safari" /><div class="gallery-caption">Serengeti Lions</div></div>
-        <div class="gallery-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Masai%20Giraffe%20against%20Mount%20Kilimanjaro.jpg" alt="Giraffe with Mount Kilimanjaro Tanzania" /><div class="gallery-caption">Giraffes &amp; Kilimanjaro</div></div>
-        <div class="gallery-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Beach%20at%20Zanzibar.jpg" alt="Zanzibar beach Tanzania holiday destination" /><div class="gallery-caption">Zanzibar Beach</div></div>
-        <div class="gallery-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/African%20Bush%20Elephant.jpg" alt="African elephant Tanzania safari" /><div class="gallery-caption">Tanzania Elephants</div></div>
-        <div class="gallery-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mount%20Kilimanjaro.jpg" alt="Mount Kilimanjaro Tanzania Africa" /><div class="gallery-caption">Mount Kilimanjaro</div></div>
-        <div class="gallery-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Serengeti-Landscape-2012.JPG" alt="Serengeti landscape Tanzania safari" /><div class="gallery-caption">Serengeti Landscape</div></div>
+        <div class="gallery-item"><img src="zanzibar-beach-1.jpg" /><div class="gallery-caption">Zanzibar Beach</div></div>
+        <div class="gallery-item"><img src="zanzibar-sunset.jpg" /><div class="gallery-caption">Zanzibar Sunset</div></div>
+        <div class="gallery-item"><img src="zanzibar-turtles.jpg" /><div class="gallery-caption">Ocean Life</div></div>
+        <div class="gallery-item"><img src="safari-road.jpg" /><div class="gallery-caption">Safari Journey</div></div>
+        <div class="gallery-item"><img src="cheetah-jeep.jpg" /><div class="gallery-caption">Wild Encounters</div></div>
+        <div class="gallery-item"><img src="tourists-safari.jpg" /><div class="gallery-caption">Guest Experience</div></div>
       </div>
     </div>
   </section>
@@ -889,10 +970,10 @@
       <h2 class="section-heading">Trusted tourism and conservation partners</h2>
       <p class="section-text">We value strong connections within Tanzania’s tourism and conservation landscape and remain committed to promoting responsible, memorable travel experiences.</p>
       <div class="partners-grid">
-        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Tanzania_Tourist_Board_logo.png" alt="Tanzania Tourism Board logo" /></div>
-        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/TATO_logo.png" alt="TATO logo" /></div>
-        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Ngorongoro_Conservation_Area_logo.png" alt="Ngorongoro Conservation Area logo" /></div>
-        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Tripadvisor_logo.svg" alt="Tripadvisor logo" /></div>
+        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Tanzania_Tourist_Board_logo.png/320px-Tanzania_Tourist_Board_logo.png" alt="Tanzania Tourism Board logo" /></div>
+        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/TATO_logo.png/320px-TATO_logo.png" alt="TATO logo" /></div>
+        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ngorongoro_Conservation_Area_logo.png/320px-Ngorongoro_Conservation_Area_logo.png" alt="Ngorongoro Conservation Area logo" /></div>
+        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Tripadvisor_logo.svg/512px-Tripadvisor_logo.svg.png" alt="Tripadvisor logo" /></div>
       </div>
     </div>
   </section>
@@ -919,6 +1000,32 @@
           <div class="why-item">We communicate quickly and clearly, helping guests plan with more confidence.</div>
           <div class="why-item">We present Tanzania as an experience with beauty, story, atmosphere, and care.</div>
           <div class="why-item">We build itineraries that feel smooth, warm, memorable, and professionally guided.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <p class="section-title">FAQ</p>
+      <h2 class="section-heading">Frequently asked questions</h2>
+      <p class="section-text">Helpful answers for guests planning a Tanzania safari, Zanzibar holiday, or custom private itinerary.</p>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Can I combine safari and Zanzibar in one trip?</h3>
+          <p>Yes. Many guests combine Serengeti or Ngorongoro with Zanzibar for a balanced journey that includes wildlife, relaxation, and ocean experiences.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do you offer private tours?</h3>
+          <p>Yes. Lowara Safaris specializes in private and customized itineraries for couples, families, friends, honeymooners, and small groups.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can you help with airport pickup and hotels?</h3>
+          <p>Yes. We assist with airport transfers, travel coordination, and accommodation planning to help your journey run smoothly from arrival to departure.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How do I start planning?</h3>
+          <p>You can send us a WhatsApp message or use the booking request section. Share your dates, group size, and preferred destinations, and we will guide you from there.</p>
         </div>
       </div>
     </div>
