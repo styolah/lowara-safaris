@@ -85,29 +85,20 @@
     }
     .brand { display: flex; align-items: center; gap: 14px; }
     .logo {
-      position: relative;
-      width: 70px;
-      height: 70px;
-      border-radius: 18px;
-      background: #000;
+      width: 58px;
+      height: 58px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow);
-      overflow: hidden;
     }
     .logo img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
+      background: transparent;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.28));
     }
-    .logo::after {
-      content: "";
-      position: absolute;
-      inset: 5px;
-      border-radius: 15px;
-      border: 1px solid rgba(255,255,255,0.16);
-    }
+    
     .brand-text h1 {
       margin: 0;
       font-size: 28px;
@@ -128,8 +119,10 @@
     }
     .nav-links a {
       color: #f3dfcf;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
     .nav-links a:hover { color: var(--gold-soft); }
 
@@ -140,7 +133,7 @@
       align-items: center;
       overflow: hidden;
       background:
-        linear-gradient(90deg, rgba(16,11,9,0.92) 0%, rgba(28,18,13,0.82) 42%, rgba(59,35,18,0.46) 100%),
+        linear-gradient(90deg, rgba(12,8,6,0.94) 0%, rgba(24,16,12,0.86) 42%, rgba(51,31,18,0.54) 100%),
         radial-gradient(circle at top right, rgba(232,166,84,0.18), transparent 28%),
         radial-gradient(circle at bottom left, rgba(35,139,97,0.16), transparent 32%),
         url('leopard-hero.jpg') center/cover no-repeat;
@@ -685,7 +678,7 @@
   <header class="topbar">
     <div class="container nav">
       <div class="brand">
-        <div class="logo"><img src="logo.jpg" alt="Lowara Safaris Logo" /></div>
+        <div class="logo"><img src="logo.png" alt="Lowara Safaris Logo" /></div>
         <div class="brand-text">
           <div style="font-size:28px;font-weight:800;line-height:1;letter-spacing:-0.04em;color:#fff4e8;">Lowara Safaris</div>
           <p>Wild Journeys. Real Tanzania.</p>
@@ -698,7 +691,6 @@
         <a href="#gallery">Gallery</a>
         <a href="#reviews">Reviews</a>
         <a href="#booking">Booking</a>
-        <a href="#partners">Partners</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -739,10 +731,10 @@
 
   <section>
     <div class="container stats-grid">
-      <div class="info-card"><strong>Serengeti</strong><span>Classic Tanzania safari experiences with wildlife, open plains, and unforgettable game drives.</span></div>
-      <div class="info-card"><strong>Ngorongoro</strong><span>Scenic crater tours with strong wildlife viewing and iconic northern circuit atmosphere.</span></div>
-      <div class="info-card"><strong>Zanzibar</strong><span>Beach holidays, island relaxation, and romantic coastal escapes after safari.</span></div>
-      <div class="info-card"><strong>Kilimanjaro</strong><span>Mountain scenery, highland experiences, and northern Tanzania travel extensions.</span></div>
+      <div class="info-card"><strong>Serengeti</strong><span>Iconic wildlife safaris</span></div>
+      <div class="info-card"><strong>Ngorongoro</strong><span>Scenic crater journeys</span></div>
+      <div class="info-card"><strong>Zanzibar</strong><span>Beach and ocean escapes</span></div>
+      <div class="info-card"><strong>Kilimanjaro</strong><span>Highland adventure extensions</span></div>
     </div>
   </section>
 
@@ -870,13 +862,13 @@
     <div class="container">
       <div class="luxury-strip">
         <div>
-          <h3>Private Tanzania journeys with fast planning, flexible routes, and warm local guidance.</h3>
-          <p>From first inquiry to final transfer, Lowara Safaris focuses on clear communication, honest support, and experiences that feel smooth, personal, and memorable.</p>
+          <h3>Every itinerary is designed around your time, comfort, and dream destinations in Tanzania.</h3>
+          <p>From wildlife safaris to Zanzibar escapes, we create journeys that feel smooth, personal, and unforgettable.</p>
         </div>
         <div class="button-row" style="justify-content:flex-end; margin-top:0;">
-          <a class="btn btn-primary" href="https://wa.me/255762067794?text=Hello%20Lowara%20Safaris%2C%20I%20want%20a%20custom%20Tanzania%20itinerary." target="_blank" rel="noreferrer">
+          <a class="btn btn-primary" href="https://wa.me/255762067794?text=Hello%20Lowara%20Safaris%2C%20I%20want%20to%20plan%20a%20trip." target="_blank" rel="noreferrer">
             <svg class="icon-wa" viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.21c-.27-.13-1.58-.78-1.82-.87-.24-.09-.42-.13-.6.13-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.33-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.33-.02-.47-.07-.13-.6-1.45-.82-1.99-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.47.07-.71.33-.24.27-.91.89-.91 2.16 0 1.27.93 2.5 1.06 2.67.13.18 1.83 2.79 4.44 3.91.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.07 1.58-.64 1.8-1.26.22-.62.22-1.15.16-1.26-.07-.11-.24-.18-.51-.31zM16.27 4.36c-6.35 0-11.5 5.15-11.5 11.5 0 2.03.53 4.01 1.54 5.76L4.7 27.64l6.17-1.58a11.45 11.45 0 0 0 5.4 1.38h.01c6.35 0 11.5-5.15 11.5-11.5 0-3.08-1.2-5.98-3.38-8.15a11.42 11.42 0 0 0-8.13-3.43zm0 21.14h-.01a9.54 9.54 0 0 1-4.87-1.34l-.35-.21-3.66.94.98-3.57-.23-.37a9.58 9.58 0 0 1-1.47-5.08c0-5.29 4.31-9.6 9.61-9.6 2.56 0 4.96.99 6.77 2.8a9.52 9.52 0 0 1 2.81 6.8c0 5.29-4.31 9.6-9.58 9.6z"/></svg>
-            Plan My Trip
+            Start Planning
           </a>
         </div>
       </div>
@@ -908,17 +900,17 @@
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <p>Our safari was beautifully organized from the moment we arrived. Communication was fast, the itinerary felt thoughtful, and every day gave us something special. Lowara Safaris made the whole experience feel smooth, warm, and personal.</p>
-          <div class="review-name">Amina K. — Family Safari Guest</div>
+          <div class="review-name">Emma &amp; Daniel — United Kingdom</div>
         </div>
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <p>We combined Serengeti and Zanzibar, and it was exactly the kind of journey we hoped for. The balance of adventure, relaxation, and care was excellent. We felt welcomed, guided, and confident all the way through.</p>
-          <div class="review-name">Daniel M. — Couple from Europe</div>
+          <div class="review-name">Sofia R. — Italy</div>
         </div>
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <p>What stood out most was the attention to detail. Lowara Safaris listened carefully to what we wanted and turned it into a trip that felt unique to us. Professional, friendly, and very easy to recommend.</p>
-          <div class="review-name">Sarah T. — Private Group Traveler</div>
+          <div class="review-name">Michael T. — United States</div>
         </div>
       </div>
     </div>
@@ -960,20 +952,6 @@
           </form>
           <div class="booking-note">This opens an email draft addressed to: stiollasagday06@gmail.com</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="partners">
-    <div class="container">
-      <p class="section-title">Partners</p>
-      <h2 class="section-heading">Trusted tourism and conservation partners</h2>
-      <p class="section-text">We value strong connections within Tanzania’s tourism and conservation landscape and remain committed to promoting responsible, memorable travel experiences.</p>
-      <div class="partners-grid">
-        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Tanzania_Tourist_Board_logo.png/320px-Tanzania_Tourist_Board_logo.png" alt="Tanzania Tourism Board logo" /></div>
-        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/TATO_logo.png/320px-TATO_logo.png" alt="TATO logo" /></div>
-        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ngorongoro_Conservation_Area_logo.png/320px-Ngorongoro_Conservation_Area_logo.png" alt="Ngorongoro Conservation Area logo" /></div>
-        <div class="partner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Tripadvisor_logo.svg/512px-Tripadvisor_logo.svg.png" alt="Tripadvisor logo" /></div>
       </div>
     </div>
   </section>
